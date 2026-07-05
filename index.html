@@ -118,14 +118,10 @@
   .hero svg.traces{ position:absolute; top:0; right:-60px; width:620px; max-width:60vw; opacity:.85; z-index:1; }
   .trace-line{
     fill:none; stroke:var(--pcb-green-light); stroke-width:2;
-    stroke-dasharray: 6 8; animation: dash 18s linear infinite;
-    opacity:.55;
+    stroke-dasharray: 6 8; opacity:.55;
   }
   .trace-line.copper{ stroke:var(--copper); opacity:.5; }
-  @keyframes dash{ to{ stroke-dashoffset:-400; } }
   .node{ fill:var(--copper-light); }
-  .node.pulse{ animation: pulse 2.4s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{ opacity:.4; r:3; } 50%{ opacity:1; r:5; } }
 
   .hero h1{
     font-size:clamp(38px, 6vw, 68px); line-height:1.02; color:var(--silk);
@@ -167,7 +163,7 @@
   .card{
     background:var(--pcb-dark-2); border:1px solid rgba(234,231,217,0.1);
     border-radius:var(--radius); padding:22px; cursor:pointer; position:relative;
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    transition: border-color .2s ease;
     display:flex; flex-direction:column; gap:12px;
   }
   .card::before, .card::after{
@@ -175,10 +171,7 @@
     background:var(--pcb-dark); border:2px solid var(--copper); top:12px;
   }
   .card::before{ left:12px; } .card::after{ right:12px; }
-  .card:hover{
-    transform:translateY(-4px); border-color:var(--copper);
-    box-shadow:0 14px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,136,75,0.15);
-  }
+  .card:hover{ border-color:var(--copper); }
   .card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-top:6px; }
   .card-code{ font-family:var(--mono); font-size:11px; color:var(--copper-light); letter-spacing:.08em; }
   .badge-volt{
@@ -241,9 +234,8 @@
   .modal{
     background:var(--pcb-dark-2); border:1px solid var(--copper); border-radius:10px;
     max-width:640px; width:100%; max-height:86vh; overflow-y:auto; padding:36px;
-    position:relative; animation: modalIn .25s ease;
+    position:relative;
   }
-  @keyframes modalIn{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
   .modal-close{
     position:absolute; top:20px; right:20px; background:none; border:none;
     color:var(--muted); font-size:22px; cursor:pointer; line-height:1;
@@ -313,8 +305,8 @@
       <a href="#projects">Projects</a>
       <a href="#why">Why Us</a>
       <a href="#how">Process</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="btn btn-primary">Get a Quote</a>
+      <a href="#contact">Contact us</a>
+      <a href="https://wa.me/918263936211" class="btn btn-primary" target="_blank" rel="noopener">Contact us</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
   </nav>
@@ -335,19 +327,19 @@
   </svg>
 
   <div class="hero-inner">
-    <div class="eyebrow">Pune · Final-year project kits</div>
-    <h1>Final year projects, <span class="hl">engineered</span> — not just downloaded.</h1>
-    <p class="lead">Ten working BE/BTech electronics builds — schematic to firmware to viva. Real PCB files, tested code, and a documentation report that survives your panel's questions.</p>
+    <div class="eyebrow">Pune · BE/BTech project kits</div>
+    <h1>Electronics <span class="hl">project kits</span> for BE/BTech students.</h1>
+    <p class="lead">Ten ready-to-build projects with schematic, PCB files, firmware, and a documentation report — everything you need to build and present your project.</p>
     <div class="hero-ctas">
       <a href="#projects" class="btn btn-primary">View project catalog</a>
-      <a href="#contact" class="btn btn-ghost">Request a custom build</a>
+      <a href="https://wa.me/918263936211" class="btn btn-ghost" target="_blank" rel="noopener">Ask us a question</a>
     </div>
 
     <div class="stat-strip">
       <div class="stat"><div class="num">10</div><div class="label">Ready-to-build projects</div></div>
-      <div class="stat"><div class="num">100%</div><div class="label">Tested firmware &amp; PCB</div></div>
       <div class="stat"><div class="num">4</div><div class="label">Domains covered</div></div>
-      <div class="stat"><div class="num">1:1</div><div class="label">Viva &amp; demo support</div></div>
+      <div class="stat"><div class="num">✓</div><div class="label">PCB, firmware &amp; report included</div></div>
+      <div class="stat"><div class="num">1:1</div><div class="label">Support before your viva</div></div>
     </div>
   </div>
 </section>
@@ -356,8 +348,8 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Catalog</div>
-      <h2>Pick a build, not a black box</h2>
-      <p>Every kit ships with schematic + PCB source, commented firmware, a BOM you can actually source, and a report formatted for submission. Voltage badge = build difficulty.</p>
+      <h2>Browse the projects</h2>
+      <p>Each kit includes the schematic and PCB files, commented firmware, a component list, and a report formatted for submission. The voltage badge shows the build difficulty.</p>
     </div>
 
     <div class="filters" id="filters">
@@ -376,29 +368,29 @@
   <div class="container">
     <div class="section-head">
       <div class="eyebrow">Why Arc</div>
-      <h2>Built by someone who's built these</h2>
-      <p>No template PDFs. Every kit is designed, soldered, and flashed before it's listed.</p>
+      <h2>What's included with every project</h2>
+      <p>Each kit is designed, built, and tested before it's listed here.</p>
     </div>
     <div class="why-grid">
       <div class="why-card">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--copper-light)" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
-        <h3>Real hardware, tested</h3>
-        <p>Every PCB is fabricated and bench-tested before it goes on the list — not just simulated in software.</p>
+        <h3>Tested hardware</h3>
+        <p>Each PCB is fabricated and tested on the bench before it's added to the catalog.</p>
       </div>
       <div class="why-card">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--copper-light)" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        <h3>Documentation that holds up</h3>
-        <p>A submission-ready report: block diagram, working, results, and references — written to be understood, not skimmed.</p>
+        <h3>A report you can submit</h3>
+        <p>Includes a block diagram, working explanation, results, and references, in a submission-ready format.</p>
       </div>
       <div class="why-card">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--copper-light)" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <h3>Viva &amp; demo support</h3>
-        <p>A walkthrough call before your evaluation so you can explain your own circuit with confidence — not just recite it.</p>
+        <h3>Help before your viva</h3>
+        <p>A short call to walk through the circuit and code, so you're ready to explain it in your evaluation.</p>
       </div>
       <div class="why-card">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--copper-light)" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <h3>Customizable scope</h3>
-        <p>Need it in your college's format, or want a feature added or removed? Tell us and we'll adjust the build.</p>
+        <h3>Room for changes</h3>
+        <p>If you need a feature added, removed, or formatted differently for your college, let us know.</p>
       </div>
     </div>
   </div>
@@ -412,9 +404,9 @@
     </div>
     <div class="steps">
       <div class="step"><div class="n">01</div><h3>Choose a project</h3><p>Browse the catalog and message us your pick, or ask for something custom.</p></div>
-      <div class="step"><div class="n">02</div><h3>Get your files</h3><p>Receive schematic, PCB Gerbers, firmware source, and BOM within 24–48 hours.</p></div>
-      <div class="step"><div class="n">03</div><h3>Build &amp; test</h3><p>Assemble with our guide, or order the pre-built module if you'd rather skip soldering.</p></div>
-      <div class="step"><div class="n">04</div><h3>Present with confidence</h3><p>Use the included report and a support call to prep for your demo and viva.</p></div>
+      <div class="step"><div class="n">02</div><h3>Get your files</h3><p>Receive the schematic, PCB files, firmware, and BOM within 24–48 hours.</p></div>
+      <div class="step"><div class="n">03</div><h3>Build &amp; test</h3><p>Assemble it yourself with our guide, or order the pre-built module.</p></div>
+      <div class="step"><div class="n">04</div><h3>Prepare for your viva</h3><p>Use the included report and a support call to get ready for your demo.</p></div>
     </div>
   </div>
 </section>
@@ -423,11 +415,12 @@
   <div class="container">
     <div class="contact-panel">
       <div>
-        <h2>Have a project in mind we haven't listed?</h2>
-        <p>Send your topic, deadline, and budget on WhatsApp — most custom builds are scoped within a day.</p>
+        <div class="eyebrow">Contact us</div>
+        <h2>Questions, or a project we haven't listed?</h2>
+        <p>Message us on WhatsApp with your topic, deadline, and budget, and we'll get back to you.</p>
       </div>
       <div class="contact-actions">
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Arc%20Electricals%2C%20I%27d%20like%20to%20know%20more%20about%20your%20BE%2FBTech%20project%20kits." class="btn btn-primary" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a href="https://wa.me/918263936211?text=Hi%20Arc%20Electricals%2C%20I%27d%20like%20to%20know%20more%20about%20your%20BE%2FBTech%20project%20kits." class="btn btn-primary" target="_blank" rel="noopener">Chat on WhatsApp — 82639 36211</a>
         <a href="mailto:hello@arcelectricals.example" class="btn btn-ghost">Email us</a>
       </div>
     </div>
@@ -465,7 +458,7 @@
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 
-const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // TODO: replace with your real WhatsApp number, country code first, no + or spaces
+const WHATSAPP_NUMBER = "918263936211";
 
 const projects = [
   {
